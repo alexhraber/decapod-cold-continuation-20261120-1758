@@ -28,6 +28,14 @@
       "proof_refs": [
         "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.diagnostic.json"
       ]
+    },
+    {
+      "id": "spec-review-1758",
+      "summary": "Record current-code-bound authorization spec reviews required by validation",
+      "input_digest": "sha256:cf95c681fc2869e1fbae7ccd8390eb86114f344a90104d8f60017acd6e980635",
+      "proof_refs": [
+        "/tmp/feat_01m7w2e2beb55s94-validation.json"
+      ]
     }
   ],
   "intents": {
@@ -66,6 +74,22 @@
         "decapod validate --format json"
       ],
       "schema_version": "1.1.0",
+      "spec_reviews": [
+        {
+          "disposition": "updated",
+          "path": ".decapod/managed/specs/ARCHITECTURE.md",
+          "reason": "Reviewed synchronous CommonJS predicate against documented organization-first authorization, owner exception and array grants. Independent guard and accepted command configuration remain byte-unchanged.",
+          "reviewed_code_fingerprint": "2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898",
+          "spec_material_hash": "2eb79364aa2e21da85538195f8526b506466f8f7353ad49ab0ec44ce51977c07"
+        },
+        {
+          "disposition": "updated",
+          "path": ".decapod/managed/specs/INTERFACES.md",
+          "reason": "Reviewed canRead implementation against authored API section: Boolean output; literal active membership and exact organization equality precede owner/grant check; Array.isArray guards missing grants; repository is required. No transport or persistence added.",
+          "reviewed_code_fingerprint": "2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898",
+          "spec_material_hash": "8a6c585cfe051851762bd5e168e42a190c2afa049f729c63dada6883cd3e7dba"
+        }
+      ],
       "state": "APPROVED",
       "stop_conditions": [],
       "title": "Implement README repository-scoped read authorization; retain failing baseline and publish verified unmerged PR",
@@ -74,7 +98,7 @@
       ],
       "unknowns": [],
       "unresolved_contradictions": [],
-      "updated_at": "1795164737Z"
+      "updated_at": "1795164914Z"
     },
     "trajectory": {
       "active_boundaries": [

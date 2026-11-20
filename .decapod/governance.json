@@ -20,6 +20,14 @@
       "id": "baseline-1758",
       "summary": "Retain seeded access implementation for regression baseline; record README acceptance",
       "input_digest": "sha256:eba79ea0332a28cedd8f7f0d832a7e59e08f444f9449494b793a9623892fd781"
+    },
+    {
+      "id": "restrict-read-1758",
+      "summary": "Restrict reads to repository grants or active same-organization owner; retain actual failed baseline",
+      "input_digest": "sha256:46551249a4a39b00d59a1b8c4d11d3232c3c27279776982ea6781f93fe4c6177",
+      "proof_refs": [
+        "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.diagnostic.json"
+      ]
     }
   ],
   "intents": {
@@ -72,9 +80,14 @@
       "active_boundaries": [
         "Current claimed task and isolated work branch"
       ],
-      "artifact_hash": "sha256:91f3561aeb555f8229f9473e314bcf0ed3f1326eecf46904e885dfd9ad1306b0",
-      "checks": [],
-      "current_phase": "intent",
+      "artifact_hash": "sha256:47b086f37dc1a6202f2386cc85524b1c490b138339e9ffcf07579cf6fd352814",
+      "checks": [
+        {
+          "name": "baseline-authorization",
+          "status": "failed"
+        }
+      ],
+      "current_phase": "implementation",
       "custody": {
         "events": [
           {
@@ -95,10 +108,24 @@
             "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
             "kind": "trajectory_step_recorded",
             "sequence": 4
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:5",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 5
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:6",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 6
           }
         ],
         "knowledge_candidates": [],
-        "next_sequence": 4,
+        "next_sequence": 6,
         "schema_version": "1.0.0",
         "trajectories": {
           "branch_01M7W2EM4RH3KGK3Z26WFBM8P9": {
@@ -120,21 +147,64 @@
                 ],
                 "sequence": 4,
                 "validation_findings": []
+              },
+              {
+                "action": "baseline",
+                "command": "decapod validate --format json",
+                "custody_event_id": "event:5",
+                "observations": [
+                  "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.diagnostic.json",
+                  "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.stderr"
+                ],
+                "proof_refs": [
+                  "baseline-authorization"
+                ],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 5,
+                "validation_findings": []
+              },
+              {
+                "action": "implementation",
+                "custody_event_id": "event:6",
+                "observations": [
+                  "src/access.cjs",
+                  ".decapod/managed/specs/INTENT.md",
+                  ".decapod/managed/specs/ARCHITECTURE.md",
+                  ".decapod/managed/specs/INTERFACES.md"
+                ],
+                "proof_refs": [],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 6,
+                "validation_findings": []
               }
             ]
           }
         }
       },
-      "declared_commands": [],
+      "declared_commands": [
+        "decapod validate --format json"
+      ],
       "destination": "pull request",
-      "evidence": [],
+      "evidence": [
+        "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.diagnostic.json",
+        "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.stderr"
+      ],
       "inspected_files": [
         ".decapod/config.toml",
         "README.md",
         "src/access.cjs"
       ],
       "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
-      "modified_files": [],
+      "modified_files": [
+        ".decapod/managed/specs/ARCHITECTURE.md",
+        ".decapod/managed/specs/INTENT.md",
+        ".decapod/managed/specs/INTERFACES.md",
+        "src/access.cjs"
+      ],
       "next_transitions": [
         "Refine plan and declare falsifiable checks"
       ],

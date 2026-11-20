@@ -85,7 +85,7 @@ record that it is not applicable; this example is not a replay guarantee.
 
 ## Codebase Attestation
 
-- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Repository signal fingerprint: `2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898`
 - Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
 - Refreshed from the current codebase by `decapod rpc --op specs.refresh`
 <!-- decapod:codebase-attestation:end -->

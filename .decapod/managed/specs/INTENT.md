@@ -18,9 +18,12 @@ Active owners in that organization do not need a grant. Anonymous actors,
 revoked membership, other organizations and grants for other repositories must
 be denied. The independent `src/guard.txt` source guard remains unchanged.
 
-Before implementation, the seeded predicate checks only organization and active
-membership; repository-specific denial is not implemented. Retain an actual
-failing `decapod validate --format json` observation before editing that predicate.
+The seeded predicate checked only organization and active membership. Before
+editing it, `decapod validate --format json` on candidate `eccc202` failed the
+accepted assertion "missing repository grant" (actual true, expected false).
+The implementation now adds ownership or exact array-grant checks inside the
+active same-organization boundary; fresh validation must prove the repaired
+candidate. The baseline observation remains in the governed trajectory.
 The accepted inline authorization assertions and guard command in
 `.decapod/config.toml` are the proof authority, not replacement tests. No cloud
 integration, deployment or merge is in scope; publication is an unmerged PR.
@@ -149,7 +152,7 @@ flowchart LR
 
 ## Codebase Attestation
 
-- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Repository signal fingerprint: `2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898`
 - Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
 - Refreshed from the current codebase by `decapod rpc --op specs.refresh`
 <!-- decapod:codebase-attestation:end -->

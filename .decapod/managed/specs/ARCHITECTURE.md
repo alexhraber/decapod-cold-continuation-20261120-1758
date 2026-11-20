@@ -1,5 +1,17 @@
 # Architecture
 
+## Repository Authorization Implementation
+The product is a small synchronous CommonJS authorization library, not an HTTP
+service. `src/access.cjs::canRead` evaluates supplied actor and repository
+snapshots without I/O or mutation. It first requires a non-null actor, literal
+`active === true`, and an organization ID matching the repository. Only then
+may matching `ownerId` or an array containing the exact repository `id` grant
+read access. Missing or non-array grants deny non-owners; owner access does not
+require a grants array. `src/guard.txt` is an independent fixed source guard,
+not a runtime membership provider. The accepted inline Node assertions and grep
+command in `.decapod/config.toml` provide independent local proof; there is no
+database, credential service or hosted execution guarantee in this library.
+
 ## Project Purpose
 An isolated repository access module with accepted independent source checks and exact-evidence GitHub publication
 
@@ -131,7 +143,7 @@ Do not assume database transactions, automatic retries, or side-effect rollback.
 
 ## Codebase Attestation
 
-- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Repository signal fingerprint: `2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898`
 - Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
 - Refreshed from the current codebase by `decapod rpc --op specs.refresh`
 <!-- decapod:codebase-attestation:end -->

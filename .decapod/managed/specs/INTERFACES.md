@@ -1,5 +1,18 @@
 # Interfaces
 
+## Read Authorization API
+`require('./src/access.cjs').canRead(actor, repository)` returns a Boolean.
+Repository records supply `id`, `organizationId`, and `ownerId`; actor records
+supply `id`, `organizationId`, `active`, and optional `repositoryIds` array.
+IDs are compared exactly, without coercion. An active same-organization owner
+can read without grants. Every other active same-organization actor requires
+`repositoryIds.includes(repository.id)`. Null actors, inactive or missing active
+membership, foreign organizations, absent grants and other-repository grants
+are denied. Membership and grant data are caller-supplied snapshots; this API
+does not authenticate callers or refresh revocations from an external store.
+Repository records are assumed present and well-formed; this change introduces
+no new transport, persistence or malformed-repository contract.
+
 ## Project Purpose
 An isolated repository access module with accepted independent source checks and exact-evidence GitHub publication
 
@@ -110,7 +123,7 @@ export enum ApiErrorCode {
 
 ## Codebase Attestation
 
-- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Repository signal fingerprint: `2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898`
 - Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
 - Refreshed from the current codebase by `decapod rpc --op specs.refresh`
 <!-- decapod:codebase-attestation:end -->

@@ -16,6 +16,11 @@
       "proof_refs": [
         "/tmp/1758-baseline.json"
       ]
+    },
+    {
+      "id": "baseline-manifest",
+      "summary": "Retain generated manifest refresh before baseline execution",
+      "input_digest": "sha256:7fb94599745a864ec8bdb94cd806c052cd8026296fe4921df66c8e14c16a2388"
     }
   ],
   "intents": {

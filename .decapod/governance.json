@@ -49,6 +49,11 @@
       "id": "scope-probe-cleanup",
       "summary": "Issue1758 operator negative-control cleanup. Preserve agent-authored application source; refresh native projections and execute fresh checks. This is scripted control evidence, not model repair.",
       "input_digest": "sha256:fff7ffc1f59f3e4651d629b379f2b7c203b84ba8fef3631dd6722e4b4f03c2c4"
+    },
+    {
+      "id": "source-probe-cleanup",
+      "summary": "Issue1758 operator negative-control cleanup. Preserve agent-authored application source; refresh native projections and execute fresh checks. This is scripted control evidence, not model repair.",
+      "input_digest": "sha256:4400932f26d40f6bc444ccc185f12bd0cab3ddcd99174be1d67f1c0ccb05e3e9"
     }
   ],
   "intents": {

@@ -10,6 +10,15 @@ Describe the configured project from purpose to architecture to implementation d
 
 Use the seeded context below as a starting point to verify against repository sources. Replace example diagrams, suggested controls, targets, tables, and blank fields with source-grounded prose; mark non-applicable topics with a reason. Do not adopt a store, queue, server, CI provider, replay guarantee, or service level merely because it appears in a template.
 
+## Repository Read Acceptance
+README.md requires active owning-organization membership and either an explicit
+repository grant or ownership. The seeded `src/access.cjs::canRead` currently
+checks only active organization membership: missing and foreign repository grants
+are not distinguished. Before changing this behavior, retain an actual failing
+`authorization-contract` observation through `decapod validate --format json`.
+The independent `guard-contract` and `src/guard.txt` must remain unchanged.
+Publication is an unmerged PR, not merge authorization (DecapodLabs/decapod#1758).
+
 ## Product Outcome
 - An isolated repository access module with accepted independent source checks and exact-evidence GitHub publication
 
@@ -129,3 +138,12 @@ flowchart LR
 |---|---|---|---|
 | Which interfaces are versioned at launch? | TBD | YYYY-MM-DD | |
 | Which non-functional target is hardest to hit? | TBD | YYYY-MM-DD | |
+
+<!-- decapod:codebase-attestation:start -->
+
+## Codebase Attestation
+
+- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
+- Refreshed from the current codebase by `decapod rpc --op specs.refresh`
+<!-- decapod:codebase-attestation:end -->

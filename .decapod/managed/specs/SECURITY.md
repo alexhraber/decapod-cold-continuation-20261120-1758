@@ -114,3 +114,12 @@ Describe the security primitives and security controls implemented in this repos
 - **Least Privilege**: Ensure minimal access permissions for all subsystems and roles.
 - **Input Validation**: Strictly validate all inputs at trust boundaries.
 - **Secure Storage**: Encrypt sensitive data at rest and in transit.
+
+<!-- decapod:codebase-attestation:start -->
+
+## Codebase Attestation
+
+- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
+- Refreshed from the current codebase by `decapod rpc --op specs.refresh`
+<!-- decapod:codebase-attestation:end -->

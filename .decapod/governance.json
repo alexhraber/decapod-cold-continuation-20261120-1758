@@ -36,6 +36,14 @@
       "proof_refs": [
         "/tmp/feat_01m7w2e2beb55s94-validation.json"
       ]
+    },
+    {
+      "id": "security-review-1758",
+      "summary": "Document and review repository authorization security boundary",
+      "input_digest": "sha256:9e2b463cb610c40140d0f4631cd57500d178a9dbcfa4674cb16958380091e03a",
+      "proof_refs": [
+        "/tmp/feat_01m7w2e2beb55s94-reviewed-validation.json"
+      ]
     }
   ],
   "intents": {
@@ -88,6 +96,13 @@
           "reason": "Reviewed canRead implementation against authored API section: Boolean output; literal active membership and exact organization equality precede owner/grant check; Array.isArray guards missing grants; repository is required. No transport or persistence added.",
           "reviewed_code_fingerprint": "2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898",
           "spec_material_hash": "8a6c585cfe051851762bd5e168e42a190c2afa049f729c63dada6883cd3e7dba"
+        },
+        {
+          "disposition": "updated",
+          "path": ".decapod/managed/specs/SECURITY.md",
+          "reason": "Reviewed canRead security boundary: active same-organization membership before owner/grant privileges, missing grants deny non-owners, caller snapshots trusted, no external identity or revocation service. Independent guard and proof assertions unchanged.",
+          "reviewed_code_fingerprint": "2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898",
+          "spec_material_hash": "1516ca5484580ef938e648a8990ffc447a0a4a5d6cf97fe67496d34eafee97e5"
         }
       ],
       "state": "APPROVED",
@@ -98,7 +113,7 @@
       ],
       "unknowns": [],
       "unresolved_contradictions": [],
-      "updated_at": "1795164914Z"
+      "updated_at": "1795164966Z"
     },
     "trajectory": {
       "active_boundaries": [

@@ -36,9 +36,20 @@ flowchart LR
 - Rotation and revocation:
 
 ## Authorization
-- Role model:
-- Resource-level policy:
-- Privilege escalation controls:
+`src/access.cjs::canRead` protects repository read decisions from overly broad
+organization-only access. Literal active membership and matching organization
+are mandatory even for owners. Ownership grants access only to the matching
+repository owner; non-owners must have an exact repository ID in an array of
+grants. Missing grants deny non-owners. Revoked members, revoked owners and
+foreign organizations are denied before ownership or grants are considered.
+
+The library trusts caller-provided identity and membership snapshots; it does
+not authenticate them, persist secrets or query a revocation service. Valid
+repository records are a caller precondition. The surrounding template's
+suggested identity providers, encryption, logs and scanners are not implemented
+runtime guarantees. The independent source guard `src/guard.txt` and accepted
+inline authorization assertions are preserved unchanged; Decapod validation
+must execute them before publication.
 
 ## Data Classification
 | Data Class | Examples | Storage Rules | Access Rules |

@@ -1,0 +1,2 @@
+Owner: DecapodLabs/decapod#1758
+Controlled accepted-target advancement for cold continuation.

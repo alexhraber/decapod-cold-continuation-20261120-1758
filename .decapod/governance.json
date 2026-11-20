@@ -54,6 +54,14 @@
       "id": "source-probe-cleanup",
       "summary": "Issue1758 operator negative-control cleanup. Preserve agent-authored application source; refresh native projections and execute fresh checks. This is scripted control evidence, not model repair.",
       "input_digest": "sha256:4400932f26d40f6bc444ccc185f12bd0cab3ddcd99174be1d67f1c0ccb05e3e9"
+    },
+    {
+      "id": "cold-resume-target-sync-20261120",
+      "summary": "Resume original task under renewed custody; integrate inspected accepted target advancement without changing access or guard; document source-bound continuation proof",
+      "input_digest": "sha256:1dc92b78eb7587999d79e24524e22e71f73816baa96e01f3c73850ac2797bcf3",
+      "proof_refs": [
+        "/tmp/feat_01m7w2e2beb55s94-cold-resume-validation.json"
+      ]
     }
   ],
   "intents": {
@@ -129,10 +137,14 @@
       "active_boundaries": [
         "Current claimed task and isolated work branch"
       ],
-      "artifact_hash": "sha256:47b086f37dc1a6202f2386cc85524b1c490b138339e9ffcf07579cf6fd352814",
+      "artifact_hash": "sha256:96ec528e5e1a6441b0bad513aba371077b7e4431bbc9610059cfe330560ef551",
       "checks": [
         {
           "name": "baseline-authorization",
+          "status": "failed"
+        },
+        {
+          "name": "cold-resume-validation",
           "status": "failed"
         }
       ],
@@ -171,10 +183,17 @@
             "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
             "kind": "trajectory_step_recorded",
             "sequence": 6
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:7",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 7
           }
         ],
         "knowledge_candidates": [],
-        "next_sequence": 6,
+        "next_sequence": 7,
         "schema_version": "1.0.0",
         "trajectories": {
           "branch_01M7W2EM4RH3KGK3Z26WFBM8P9": {
@@ -228,6 +247,22 @@
                   "root"
                 ],
                 "sequence": 6,
+                "validation_findings": []
+              },
+              {
+                "action": "trajectory.record",
+                "custody_event_id": "event:7",
+                "observations": [
+                  "README.md",
+                  "src/access.cjs"
+                ],
+                "proof_refs": [
+                  "cold-resume-validation"
+                ],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 7,
                 "validation_findings": []
               }
             ]

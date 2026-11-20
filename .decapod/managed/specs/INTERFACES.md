@@ -10,6 +10,19 @@ Describe the configured project from purpose to architecture to implementation d
 
 Use the seeded context below as a starting point to verify against repository sources. Replace example diagrams, suggested controls, targets, tables, and blank fields with source-grounded prose; mark non-applicable topics with a reason. Do not adopt a store, queue, server, CI provider, replay guarantee, or service level merely because it appears in a template.
 
+## Implemented Read Interface
+`require('./src/access.cjs').canRead(actor, repository)` returns a boolean.
+Repository records provide `id`, `organizationId`, and `ownerId`; actors provide
+`id`, `organizationId`, `active`, and optional `repositoryIds` (an array of exact
+repository IDs). IDs are caller-supplied canonical values, compared strictly.
+A null actor is denied. Only literal `active === true` qualifies, and the actor's
+organization must match the repository's. A qualifying owner needs no grant;
+other qualifying members need `repositoryIds.includes(repository.id)`. Missing
+or non-array grants deny non-owners. No mutation, asynchronous work, or retry is
+performed. Malformed repository records are outside this record-shape contract.
+The accepted ten independent assertions, not the convenience test copy, own the
+required proof. No HTTP endpoint or identity-verification service is implemented.
+
 ## Contract Principles
 - Prefer explicit schemas over implicit behavior.
 - Every mutating interface defines idempotency semantics.
@@ -105,3 +118,12 @@ export enum ApiErrorCode {
 - [ ] Consumers can distinguish validation, authorization, conflict,
   dependency, and internal failures.
 - [ ] Backward compatibility or migration instructions are published.
+
+<!-- decapod:codebase-attestation:start -->
+
+## Codebase Attestation
+
+- Repository signal fingerprint: `1e15b11fe02e1120c632662dad3b6ae29dd8084f19acdc300f58d7440c6acef3`
+- Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
+- Refreshed from the current codebase by `decapod rpc --op specs.refresh`
+<!-- decapod:codebase-attestation:end -->

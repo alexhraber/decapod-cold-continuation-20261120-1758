@@ -36,9 +36,18 @@ flowchart LR
 - Rotation and revocation:
 
 ## Authorization
-- Role model:
-- Resource-level policy:
-- Privilege escalation controls:
+`src/access.cjs::canRead` rejects anonymous and non-active actors and actors
+outside the repository's organization before considering ownership or grants.
+Active organization members need an exact repository-ID grant; active owners
+may read their own repository without a grant. Missing/non-array grants cannot
+qualify non-owners, and a grant for another repository cannot qualify access.
+The owner exception never overrides revocation or organization isolation.
+
+The caller must supply authentic, current, well-shaped records. This module does
+not authenticate identities, store secrets, fetch revocation state, or audit reads.
+Template controls elsewhere in this scaffold are not implemented guarantees.
+The fixed accepted authorization assertions and independent source guard run
+through Decapod; their results establish only the declared local proof scope.
 
 ## Data Classification
 | Data Class | Examples | Storage Rules | Access Rules |
@@ -114,3 +123,12 @@ Describe the security primitives and security controls implemented in this repos
 - **Least Privilege**: Ensure minimal access permissions for all subsystems and roles.
 - **Input Validation**: Strictly validate all inputs at trust boundaries.
 - **Secure Storage**: Encrypt sensitive data at rest and in transit.
+
+<!-- decapod:codebase-attestation:start -->
+
+## Codebase Attestation
+
+- Repository signal fingerprint: `1e15b11fe02e1120c632662dad3b6ae29dd8084f19acdc300f58d7440c6acef3`
+- Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
+- Refreshed from the current codebase by `decapod rpc --op specs.refresh`
+<!-- decapod:codebase-attestation:end -->

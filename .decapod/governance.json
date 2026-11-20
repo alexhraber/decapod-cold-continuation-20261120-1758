@@ -1,4 +1,152 @@
 {
   "schema_version": "1.0.0",
-  "baseline": {}
+  "baseline": {
+    "accepted_commit": "7a1635d729812c14aa10f131467daf780057b01c"
+  },
+  "change": {
+    "id": "change_01M7W2EM2136V3MWH2EZM913M6",
+    "base_commit": "7a1635d729812c14aa10f131467daf780057b01c",
+    "target_base": "origin/main"
+  },
+  "claims": {
+    "repository-read": {
+      "statement": "Repository reads require active owning-organization membership plus ownership or explicit repository grant",
+      "falsifier": "Accepted authorization-contract assertions fail",
+      "status": "open"
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "baseline-1758",
+      "summary": "Retain seeded access implementation for regression baseline; record README acceptance",
+      "input_digest": "sha256:eba79ea0332a28cedd8f7f0d832a7e59e08f444f9449494b793a9623892fd781"
+    }
+  ],
+  "intents": {
+    "intent:change_01M7W2EM2136V3MWH2EZM913M6": {
+      "acceptance_criteria": [],
+      "assumptions": [],
+      "boundaries": [
+        "Current claimed task and isolated work branch"
+      ],
+      "constraints": [
+        "root"
+      ],
+      "created_sequence": 1,
+      "id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+      "out_of_scope": [],
+      "proof_requirements": [],
+      "raw_intent": "Implement README repository-scoped read authorization; retain failing baseline and publish verified unmerged PR",
+      "refined_intent": "Implement README repository-scoped read authorization; retain failing baseline and publish verified unmerged PR",
+      "status": "refined",
+      "updated_sequence": 3
+    }
+  },
+  "sections": {
+    "plan": {
+      "constraints": {
+        "file_touch_budget": null,
+        "forbidden_paths": [
+          "src/guard.txt"
+        ]
+      },
+      "deferred_questions": [],
+      "human_questions": [],
+      "intent": "Implement README: active same-organization members require exact repository grant; active same-organization owner may read without grant. Retain Decapod failing baseline before access edits, preserve guard and accepted assertions, validate exact candidate and publish unmerged through Decapod.",
+      "phases": [],
+      "proof_hooks": [
+        "decapod validate --format json"
+      ],
+      "schema_version": "1.1.0",
+      "state": "APPROVED",
+      "stop_conditions": [],
+      "title": "Implement README repository-scoped read authorization; retain failing baseline and publish verified unmerged PR",
+      "todo_ids": [
+        "feat_01m7w2e2beb55s94"
+      ],
+      "unknowns": [],
+      "unresolved_contradictions": [],
+      "updated_at": "1795164737Z"
+    },
+    "trajectory": {
+      "active_boundaries": [
+        "Current claimed task and isolated work branch"
+      ],
+      "artifact_hash": "sha256:91f3561aeb555f8229f9473e314bcf0ed3f1326eecf46904e885dfd9ad1306b0",
+      "checks": [],
+      "current_phase": "intent",
+      "custody": {
+        "events": [
+          {
+            "event_id": "event:2",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "created",
+            "sequence": 2
+          },
+          {
+            "event_id": "event:3",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "refined",
+            "sequence": 3
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:4",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 4
+          }
+        ],
+        "knowledge_candidates": [],
+        "next_sequence": 4,
+        "schema_version": "1.0.0",
+        "trajectories": {
+          "branch_01M7W2EM4RH3KGK3Z26WFBM8P9": {
+            "evidence_only": true,
+            "id": "branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "steps": [
+              {
+                "action": "trajectory.record",
+                "custody_event_id": "event:4",
+                "observations": [
+                  "README.md",
+                  "src/access.cjs",
+                  ".decapod/config.toml"
+                ],
+                "proof_refs": [],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 4,
+                "validation_findings": []
+              }
+            ]
+          }
+        }
+      },
+      "declared_commands": [],
+      "destination": "pull request",
+      "evidence": [],
+      "inspected_files": [
+        ".decapod/config.toml",
+        "README.md",
+        "src/access.cjs"
+      ],
+      "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+      "modified_files": [],
+      "next_transitions": [
+        "Refine plan and declare falsifiable checks"
+      ],
+      "repo_scope": [
+        "root"
+      ],
+      "run_id": "branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+      "schema_version": "1.1.0",
+      "shortcut_risk_signals": [],
+      "task_id": "feat_01m7w2e2beb55s94",
+      "tool_calls": [],
+      "unresolved_assumptions": []
+    }
+  }
 }

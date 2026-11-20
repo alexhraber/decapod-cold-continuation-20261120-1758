@@ -10,6 +10,21 @@ Describe the configured project from purpose to architecture to implementation d
 
 Use the seeded context below as a starting point to verify against repository sources. Replace example diagrams, suggested controls, targets, tables, and blank fields with source-grounded prose; mark non-applicable topics with a reason. Do not adopt a store, queue, server, CI provider, replay guarantee, or service level merely because it appears in a template.
 
+## Repository Read Acceptance
+README.md defines the product's authorization boundary for callers of
+`src/access.cjs::canRead`: active membership in the repository's organization
+is necessary, and non-owners additionally need an explicit repository ID grant.
+Active owners in that organization do not need a grant. Anonymous actors,
+revoked membership, other organizations and grants for other repositories must
+be denied. The independent `src/guard.txt` source guard remains unchanged.
+
+Before implementation, the seeded predicate checks only organization and active
+membership; repository-specific denial is not implemented. Retain an actual
+failing `decapod validate --format json` observation before editing that predicate.
+The accepted inline authorization assertions and guard command in
+`.decapod/config.toml` are the proof authority, not replacement tests. No cloud
+integration, deployment or merge is in scope; publication is an unmerged PR.
+
 ## Product Outcome
 - An isolated repository access module with accepted independent source checks and exact-evidence GitHub publication
 
@@ -129,3 +144,12 @@ flowchart LR
 |---|---|---|---|
 | Which interfaces are versioned at launch? | TBD | YYYY-MM-DD | |
 | Which non-functional target is hardest to hit? | TBD | YYYY-MM-DD | |
+
+<!-- decapod:codebase-attestation:start -->
+
+## Codebase Attestation
+
+- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
+- Refreshed from the current codebase by `decapod rpc --op specs.refresh`
+<!-- decapod:codebase-attestation:end -->

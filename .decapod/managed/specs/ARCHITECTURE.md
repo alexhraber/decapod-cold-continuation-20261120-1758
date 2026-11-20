@@ -14,10 +14,18 @@ Use the seeded context below as a starting point to verify against repository so
 cli
 
 ## System Overview
-Explain how Repository authorization acceptance's main components fulfill the project purpose above.
-Start at the whole-system boundary, then trace the primary workflows down to
-implementation paths and symbols. Explain why the boundaries exist and which
-tradeoffs or limitations they create. Link to evidence for each factual claim.
+Repository authorization acceptance is a small synchronous CommonJS library for
+repository read decisions. `src/access.cjs::canRead` consumes caller-supplied
+actor and repository records and returns a boolean without persistence or network
+calls. It first checks active membership in the owning organization, then allows
+either repository ownership or an exact repository-ID grant. This ordering keeps
+ownership from bypassing revoked membership or organization isolation.
+
+The caller owns authentication and record freshness; this predicate does not
+verify credentials or fetch membership. `src/guard.txt` is an independent source
+guard, not a runtime authorization dependency. The accepted Node assertions and
+grep guard command in `.decapod/config.toml` are executed by Decapod validation;
+`tests/access.contract.cjs` is only a readable convenience copy.
 
 ## Current Facts
 - Runtime/languages: JavaScript
@@ -131,7 +139,7 @@ Do not assume database transactions, automatic retries, or side-effect rollback.
 
 ## Codebase Attestation
 
-- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Repository signal fingerprint: `1e15b11fe02e1120c632662dad3b6ae29dd8084f19acdc300f58d7440c6acef3`
 - Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
 - Refreshed from the current codebase by `decapod rpc --op specs.refresh`
 <!-- decapod:codebase-attestation:end -->

@@ -12,10 +12,12 @@ Use the seeded context below as a starting point to verify against repository so
 
 ## Repository Read Acceptance
 README.md requires active owning-organization membership and either an explicit
-repository grant or ownership. The seeded `src/access.cjs::canRead` currently
-checks only active organization membership: missing and foreign repository grants
-are not distinguished. Before changing this behavior, retain an actual failing
-`authorization-contract` observation through `decapod validate --format json`.
+repository grant or ownership. `src/access.cjs::canRead` now requires
+an exact repository ID in `actor.repositoryIds` unless the actor owns the
+repository. Both paths require `active === true` and matching organization IDs.
+The unchanged seeded implementation was first validated at commit
+`6587a4bc9ccf32bad15ce1d5c2c814bd269c82fc`; its accepted `authorization-contract` failed on missing repository
+grant, returning true instead of false. Fresh validation must prove the repair.
 The independent `guard-contract` and `src/guard.txt` must remain unchanged.
 Publication is an unmerged PR, not merge authorization (DecapodLabs/decapod#1758).
 
@@ -143,7 +145,7 @@ flowchart LR
 
 ## Codebase Attestation
 
-- Repository signal fingerprint: `65522e0d4feca05bb1b05999e9cb859a5d864e98bf26f8852c291a7a442d91c2`
+- Repository signal fingerprint: `1e15b11fe02e1120c632662dad3b6ae29dd8084f19acdc300f58d7440c6acef3`
 - Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
 - Refreshed from the current codebase by `decapod rpc --op specs.refresh`
 <!-- decapod:codebase-attestation:end -->

@@ -8,6 +8,13 @@
     "base_commit": "7a1635d729812c14aa10f131467daf780057b01c",
     "target_base": "origin/main"
   },
+  "claims": {
+    "scoped-read": {
+      "statement": "Active owning-organization actors can read only as repository owner or with an exact repository grant; independent guard preserved.",
+      "falsifier": "Any accepted authorization assertion or guard-contract fails on the repaired candidate.",
+      "status": "open"
+    }
+  },
   "checkpoints": [
     {
       "id": "baseline-ready",
@@ -21,6 +28,14 @@
       "id": "baseline-manifest",
       "summary": "Retain generated manifest refresh before baseline execution",
       "input_digest": "sha256:7fb94599745a864ec8bdb94cd806c052cd8026296fe4921df66c8e14c16a2388"
+    },
+    {
+      "id": "scoped-read-fix",
+      "summary": "Require repository ownership or explicit grant after active organization membership; retain observed failing baseline",
+      "input_digest": "sha256:b54cb9e7e21ce782d9a7f9337f0f495485a7ae2b7661286224495cd60efac8f9",
+      "proof_refs": [
+        "/tmp/1758-baseline-fixed.json"
+      ]
     }
   ],
   "intents": {
@@ -75,9 +90,14 @@
         "Current claimed task and isolated work branch",
         "No merge; preserve guard and accepted proof commands"
       ],
-      "artifact_hash": "sha256:15b3eab3e202c57bdb1612eeef40d65410e3486563f9f3b9caefdebbc80b9b93",
-      "checks": [],
-      "current_phase": "intent",
+      "artifact_hash": "sha256:b3274d83f98032214817b74ed524e707ae7b8810e30b3159cc485adc2c15f0a0",
+      "checks": [
+        {
+          "name": "baseline-authorization",
+          "status": "failed"
+        }
+      ],
+      "current_phase": "implementation",
       "custody": {
         "events": [
           {
@@ -98,10 +118,17 @@
             "intent_id": "intent:change_01M7W1RSPQK5P757KZHPJSJ99Q",
             "kind": "trajectory_step_recorded",
             "sequence": 4
+          },
+          {
+            "detail": "trajectory:branch_01M7W1RSSEMFFMYGA0HX5TV49M",
+            "event_id": "event:5",
+            "intent_id": "intent:change_01M7W1RSPQK5P757KZHPJSJ99Q",
+            "kind": "trajectory_step_recorded",
+            "sequence": 5
           }
         ],
         "knowledge_candidates": [],
-        "next_sequence": 4,
+        "next_sequence": 5,
         "schema_version": "1.0.0",
         "trajectories": {
           "branch_01M7W1RSSEMFFMYGA0HX5TV49M": {
@@ -124,6 +151,23 @@
                 ],
                 "sequence": 4,
                 "validation_findings": []
+              },
+              {
+                "action": "implementation",
+                "custody_event_id": "event:5",
+                "observations": [
+                  "src/access.cjs",
+                  "src/access.cjs",
+                  "/tmp/1758-baseline-fixed.json; execution /private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-AkyxFr/native-0.stderr: ERR_ASSERTION missing repository grant actual true expected false. Access source unchanged through baseline commit."
+                ],
+                "proof_refs": [
+                  "baseline-authorization"
+                ],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 5,
+                "validation_findings": []
               }
             ]
           }
@@ -134,14 +178,18 @@
       ],
       "destination": "pull request",
       "evidence": [
+        "/tmp/1758-baseline-fixed.json; execution /private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-AkyxFr/native-0.stderr: ERR_ASSERTION missing repository grant actual true expected false. Access source unchanged through baseline commit.",
         "README requires failing baseline before access behavior changes; baseline pending."
       ],
       "inspected_files": [
         ".decapod/config.toml",
-        "README.md"
+        "README.md",
+        "src/access.cjs"
       ],
       "intent_id": "intent:change_01M7W1RSPQK5P757KZHPJSJ99Q",
-      "modified_files": [],
+      "modified_files": [
+        "src/access.cjs"
+      ],
       "next_transitions": [
         "Refine plan and declare falsifiable checks"
       ],

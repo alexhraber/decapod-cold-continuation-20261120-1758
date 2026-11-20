@@ -36,9 +36,18 @@ flowchart LR
 - Rotation and revocation:
 
 ## Authorization
-- Role model:
-- Resource-level policy:
-- Privilege escalation controls:
+`src/access.cjs::canRead` rejects anonymous and non-active actors and actors
+outside the repository's organization before considering ownership or grants.
+Active organization members need an exact repository-ID grant; active owners
+may read their own repository without a grant. Missing/non-array grants cannot
+qualify non-owners, and a grant for another repository cannot qualify access.
+The owner exception never overrides revocation or organization isolation.
+
+The caller must supply authentic, current, well-shaped records. This module does
+not authenticate identities, store secrets, fetch revocation state, or audit reads.
+Template controls elsewhere in this scaffold are not implemented guarantees.
+The fixed accepted authorization assertions and independent source guard run
+through Decapod; their results establish only the declared local proof scope.
 
 ## Data Classification
 | Data Class | Examples | Storage Rules | Access Rules |

@@ -44,6 +44,14 @@
       "proof_refs": [
         "/tmp/1758-repaired.json"
       ]
+    },
+    {
+      "id": "security-review",
+      "summary": "Document and review implemented repository authorization security boundary",
+      "input_digest": "sha256:d0c23234be0940062e63abb6ed17bfe2128322f73fa94ed45ecc33f2f4f7a368",
+      "proof_refs": [
+        "/tmp/1758-verified.json"
+      ]
     }
   ],
   "intents": {
@@ -97,6 +105,13 @@
           "reason": "Reviewed against src/access.cjs: strict active and organization checks precede owner or array exact-ID grant; boolean API and caller-owned identity/freshness documented; malformed repository records outside contract.",
           "reviewed_code_fingerprint": "1e15b11fe02e1120c632662dad3b6ae29dd8084f19acdc300f58d7440c6acef3",
           "spec_material_hash": "c218348fad5f2f2c89e35620e357e23bef691b82769ad77d7aa7525c9040b7dd"
+        },
+        {
+          "disposition": "updated",
+          "path": ".decapod/managed/specs/SECURITY.md",
+          "reason": "Documented actual authorization boundary: owner never bypasses active owning-organization checks; exact grants only; authentic and current records remain caller responsibility, with no implied authentication or audit service.",
+          "reviewed_code_fingerprint": "1e15b11fe02e1120c632662dad3b6ae29dd8084f19acdc300f58d7440c6acef3",
+          "spec_material_hash": "cd0fae0384e4ab8bf5ea294538d6979796bf596d3fb6ef9a173676c862a34752"
         }
       ],
       "state": "APPROVED",
@@ -107,7 +122,7 @@
       ],
       "unknowns": [],
       "unresolved_contradictions": [],
-      "updated_at": "1795164251Z"
+      "updated_at": "1795164303Z"
     },
     "trajectory": {
       "active_boundaries": [

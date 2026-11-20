@@ -1,4 +1,306 @@
 {
   "schema_version": "1.0.0",
-  "baseline": {}
+  "baseline": {
+    "accepted_commit": "7a1635d729812c14aa10f131467daf780057b01c"
+  },
+  "change": {
+    "id": "change_01M7W2EM2136V3MWH2EZM913M6",
+    "base_commit": "7a1635d729812c14aa10f131467daf780057b01c",
+    "target_base": "origin/main"
+  },
+  "claims": {
+    "repository-read": {
+      "statement": "Repository reads require active owning-organization membership plus ownership or explicit repository grant",
+      "falsifier": "Accepted authorization-contract assertions fail",
+      "status": "open"
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "baseline-1758",
+      "summary": "Retain seeded access implementation for regression baseline; record README acceptance",
+      "input_digest": "sha256:eba79ea0332a28cedd8f7f0d832a7e59e08f444f9449494b793a9623892fd781"
+    },
+    {
+      "id": "restrict-read-1758",
+      "summary": "Restrict reads to repository grants or active same-organization owner; retain actual failed baseline",
+      "input_digest": "sha256:46551249a4a39b00d59a1b8c4d11d3232c3c27279776982ea6781f93fe4c6177",
+      "proof_refs": [
+        "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.diagnostic.json"
+      ]
+    },
+    {
+      "id": "spec-review-1758",
+      "summary": "Record current-code-bound authorization spec reviews required by validation",
+      "input_digest": "sha256:cf95c681fc2869e1fbae7ccd8390eb86114f344a90104d8f60017acd6e980635",
+      "proof_refs": [
+        "/tmp/feat_01m7w2e2beb55s94-validation.json"
+      ]
+    },
+    {
+      "id": "security-review-1758",
+      "summary": "Document and review repository authorization security boundary",
+      "input_digest": "sha256:9e2b463cb610c40140d0f4631cd57500d178a9dbcfa4674cb16958380091e03a",
+      "proof_refs": [
+        "/tmp/feat_01m7w2e2beb55s94-reviewed-validation.json"
+      ]
+    },
+    {
+      "id": "scope-probe-cleanup",
+      "summary": "Issue1758 operator negative-control cleanup. Preserve agent-authored application source; refresh native projections and execute fresh checks. This is scripted control evidence, not model repair.",
+      "input_digest": "sha256:fff7ffc1f59f3e4651d629b379f2b7c203b84ba8fef3631dd6722e4b4f03c2c4"
+    },
+    {
+      "id": "source-probe-cleanup",
+      "summary": "Issue1758 operator negative-control cleanup. Preserve agent-authored application source; refresh native projections and execute fresh checks. This is scripted control evidence, not model repair.",
+      "input_digest": "sha256:4400932f26d40f6bc444ccc185f12bd0cab3ddcd99174be1d67f1c0ccb05e3e9"
+    },
+    {
+      "id": "cold-resume-target-sync-20261120",
+      "summary": "Resume original task under renewed custody; integrate inspected accepted target advancement without changing access or guard; document source-bound continuation proof",
+      "input_digest": "sha256:1dc92b78eb7587999d79e24524e22e71f73816baa96e01f3c73850ac2797bcf3",
+      "proof_refs": [
+        "/tmp/feat_01m7w2e2beb55s94-cold-resume-validation.json"
+      ]
+    }
+  ],
+  "intents": {
+    "intent:change_01M7W2EM2136V3MWH2EZM913M6": {
+      "acceptance_criteria": [],
+      "assumptions": [],
+      "boundaries": [
+        "Current claimed task and isolated work branch"
+      ],
+      "constraints": [
+        "root"
+      ],
+      "created_sequence": 1,
+      "id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+      "out_of_scope": [],
+      "proof_requirements": [],
+      "raw_intent": "Implement README repository-scoped read authorization; retain failing baseline and publish verified unmerged PR",
+      "refined_intent": "Implement README repository-scoped read authorization; retain failing baseline and publish verified unmerged PR",
+      "status": "refined",
+      "updated_sequence": 3
+    }
+  },
+  "sections": {
+    "plan": {
+      "constraints": {
+        "file_touch_budget": null,
+        "forbidden_paths": [
+          "src/guard.txt"
+        ]
+      },
+      "deferred_questions": [],
+      "human_questions": [],
+      "intent": "Implement README: active same-organization members require exact repository grant; active same-organization owner may read without grant. Retain Decapod failing baseline before access edits, preserve guard and accepted assertions, validate exact candidate and publish unmerged through Decapod.",
+      "phases": [],
+      "proof_hooks": [
+        "decapod validate --format json"
+      ],
+      "schema_version": "1.1.0",
+      "spec_reviews": [
+        {
+          "disposition": "updated",
+          "path": ".decapod/managed/specs/ARCHITECTURE.md",
+          "reason": "Reviewed synchronous CommonJS predicate against documented organization-first authorization, owner exception and array grants. Independent guard and accepted command configuration remain byte-unchanged.",
+          "reviewed_code_fingerprint": "2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898",
+          "spec_material_hash": "2eb79364aa2e21da85538195f8526b506466f8f7353ad49ab0ec44ce51977c07"
+        },
+        {
+          "disposition": "updated",
+          "path": ".decapod/managed/specs/INTERFACES.md",
+          "reason": "Reviewed canRead implementation against authored API section: Boolean output; literal active membership and exact organization equality precede owner/grant check; Array.isArray guards missing grants; repository is required. No transport or persistence added.",
+          "reviewed_code_fingerprint": "2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898",
+          "spec_material_hash": "8a6c585cfe051851762bd5e168e42a190c2afa049f729c63dada6883cd3e7dba"
+        },
+        {
+          "disposition": "updated",
+          "path": ".decapod/managed/specs/SECURITY.md",
+          "reason": "Reviewed canRead security boundary: active same-organization membership before owner/grant privileges, missing grants deny non-owners, caller snapshots trusted, no external identity or revocation service. Independent guard and proof assertions unchanged.",
+          "reviewed_code_fingerprint": "2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898",
+          "spec_material_hash": "1516ca5484580ef938e648a8990ffc447a0a4a5d6cf97fe67496d34eafee97e5"
+        }
+      ],
+      "state": "APPROVED",
+      "stop_conditions": [],
+      "title": "Implement README repository-scoped read authorization; retain failing baseline and publish verified unmerged PR",
+      "todo_ids": [
+        "feat_01m7w2e2beb55s94"
+      ],
+      "unknowns": [],
+      "unresolved_contradictions": [],
+      "updated_at": "1795164966Z"
+    },
+    "trajectory": {
+      "active_boundaries": [
+        "Current claimed task and isolated work branch"
+      ],
+      "artifact_hash": "sha256:96ec528e5e1a6441b0bad513aba371077b7e4431bbc9610059cfe330560ef551",
+      "checks": [
+        {
+          "name": "baseline-authorization",
+          "status": "failed"
+        },
+        {
+          "name": "cold-resume-validation",
+          "status": "failed"
+        }
+      ],
+      "current_phase": "implementation",
+      "custody": {
+        "events": [
+          {
+            "event_id": "event:2",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "created",
+            "sequence": 2
+          },
+          {
+            "event_id": "event:3",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "refined",
+            "sequence": 3
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:4",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 4
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:5",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 5
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:6",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 6
+          },
+          {
+            "detail": "trajectory:branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "event_id": "event:7",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "kind": "trajectory_step_recorded",
+            "sequence": 7
+          }
+        ],
+        "knowledge_candidates": [],
+        "next_sequence": 7,
+        "schema_version": "1.0.0",
+        "trajectories": {
+          "branch_01M7W2EM4RH3KGK3Z26WFBM8P9": {
+            "evidence_only": true,
+            "id": "branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+            "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+            "steps": [
+              {
+                "action": "trajectory.record",
+                "custody_event_id": "event:4",
+                "observations": [
+                  "README.md",
+                  "src/access.cjs",
+                  ".decapod/config.toml"
+                ],
+                "proof_refs": [],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 4,
+                "validation_findings": []
+              },
+              {
+                "action": "baseline",
+                "command": "decapod validate --format json",
+                "custody_event_id": "event:5",
+                "observations": [
+                  "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.diagnostic.json",
+                  "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.stderr"
+                ],
+                "proof_refs": [
+                  "baseline-authorization"
+                ],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 5,
+                "validation_findings": []
+              },
+              {
+                "action": "implementation",
+                "custody_event_id": "event:6",
+                "observations": [
+                  "src/access.cjs",
+                  ".decapod/managed/specs/INTENT.md",
+                  ".decapod/managed/specs/ARCHITECTURE.md",
+                  ".decapod/managed/specs/INTERFACES.md"
+                ],
+                "proof_refs": [],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 6,
+                "validation_findings": []
+              },
+              {
+                "action": "trajectory.record",
+                "custody_event_id": "event:7",
+                "observations": [
+                  "README.md",
+                  "src/access.cjs"
+                ],
+                "proof_refs": [
+                  "cold-resume-validation"
+                ],
+                "scope": [
+                  "root"
+                ],
+                "sequence": 7,
+                "validation_findings": []
+              }
+            ]
+          }
+        }
+      },
+      "declared_commands": [
+        "decapod validate --format json"
+      ],
+      "destination": "pull request",
+      "evidence": [
+        "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.diagnostic.json",
+        "/private/var/folders/h9/41kb5hv95hg9yw44654rnl9c0000gn/T/decapod-readiness-LB5niO/native-0.stderr"
+      ],
+      "inspected_files": [
+        ".decapod/config.toml",
+        "README.md",
+        "src/access.cjs"
+      ],
+      "intent_id": "intent:change_01M7W2EM2136V3MWH2EZM913M6",
+      "modified_files": [
+        ".decapod/managed/specs/ARCHITECTURE.md",
+        ".decapod/managed/specs/INTENT.md",
+        ".decapod/managed/specs/INTERFACES.md",
+        "src/access.cjs"
+      ],
+      "next_transitions": [
+        "Refine plan and declare falsifiable checks"
+      ],
+      "repo_scope": [
+        "root"
+      ],
+      "run_id": "branch_01M7W2EM4RH3KGK3Z26WFBM8P9",
+      "schema_version": "1.1.0",
+      "shortcut_risk_signals": [],
+      "task_id": "feat_01m7w2e2beb55s94",
+      "tool_calls": [],
+      "unresolved_assumptions": []
+    }
+  }
 }

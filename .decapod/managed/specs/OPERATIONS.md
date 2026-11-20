@@ -19,7 +19,19 @@ Use the seeded context below as a starting point to verify against repository so
 - [ ] Capacity guardrails documented.
 
 ## Deployment Model
-Describe the operational runtime model, scheduling, and system deployment architecture.
+`src/access.cjs` exports a synchronous CommonJS predicate used by a caller; this
+repository defines no server, deployment, scheduler, or external authorization
+service. The caller supplies membership and repository snapshots.
+
+Continuation uses the existing claimed Decapod task and isolated PR worktree.
+Fetch and inspect the accepted `main` target before reusing prior proof. If the
+target has advanced, integrate it on the work branch, preserve the baseline and
+checkpoint history, and run `decapod validate --format json` on the committed
+candidate. A historical passing receipt does not establish current readiness.
+The fixed `authorization-contract` and `guard-contract` commands in
+`.decapod/config.toml` provide repository-local proof only; no hosted CI or
+service availability is attested. `README.md` requires Decapod publication and
+leaving the PR unmerged. Target synchronization does not authorize a merge.
 
 ## Service Level Objectives
 | SLI | SLO Target | Measurement Window | Owner |
@@ -134,3 +146,12 @@ Use structured logging (pino/winston) with request_id, actor, latency_ms, and er
 - [ ] Auth/authz tests pass.
 - [ ] Dependency vulnerability scan reviewed.
 - [ ] No unresolved critical/high security findings.
+
+<!-- decapod:codebase-attestation:start -->
+
+## Codebase Attestation
+
+- Repository signal fingerprint: `2dc75382996f9ca6fd389806be4370c0150a044372b6cdf29a32d7f18c131898`
+- Significant implementation surfaces: `README.md/` (1 files), `src/` (2 files)
+- Refreshed from the current codebase by `decapod rpc --op specs.refresh`
+<!-- decapod:codebase-attestation:end -->
